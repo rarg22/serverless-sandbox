@@ -6,7 +6,7 @@ const serverlessConfiguration: Serverless = {
   },
   frameworkVersion: '2',
   custom: {
-    stage: 'TEST',
+    stage: '${opt:stage}',
     appSync: {
       name: '${self:service}-${self:custom.stage}',
       authenticationType: 'API_KEY',
