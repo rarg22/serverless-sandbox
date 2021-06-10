@@ -1,0 +1,33 @@
+type Mutation {
+    createMessage(
+        body: String!
+    ): Message!
+}
+
+type Query {
+    getMessages(filter: String): [Message!]!
+    getUsers(username: String): [User!]!
+}
+
+type Subscription {
+    addMessage: Message
+        @aws_subscribe(mutations: ["createMessage"])
+}
+
+type Message {
+    messageId: String!
+    body: String!
+    createdAt: String!
+    handle: String!
+}
+
+schema {
+    query: Query
+    mutation: Mutation
+    subscription: Subscription
+}
+
+type User {
+    name: String!
+    username: String!
+}
